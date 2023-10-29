@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book</title>
+</head>
+<body>
+<p>
+<button><a href="{%url 'books_url'%}"> All Books</a></button></p>
+<p>
+<button><a href="{% url 'book_update_url' book.id%}"> Update book</a></button>
+</p>
+<div align="center">
+<h1>{{book.title}}</h1>
+<h3>{{book.author}}</h3>
+<p>{{book.description}}</p>
+{% if book.image%}
+    <img src="{{book.image.url}}" width="600" height="600">
+    {%else%}
+    <img src="https://st.depositphotos.com/2934765/53192/v/450/depositphotos_531920820-stock-illustration-photo-available-vector-icon-default.jpg">
+{%endif%}
+    </div>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Book</title>
+</head>
+<body>
+<form action="" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+    <p>
+        <label for="title">Input book title:</label>
+        <input type="text" id="title" name="name" required>
+    </p>
+    <p>
+        <label for="description">Input book description:</label>
+        <input type="text" id="description" name = "description" required>
+    </p>
+    <p>
+        <label for="release_date">Input book release date:</label>
+        <input type="number" id="release_date" name = "release_date" required>
+    </p>
+    <p>
+        <label for="book_writer" > Select Book Writer:</label>
+        <select id="book_writer" name="book_writer">
+            <option selected disabled>-----</option>
+            {%for writer in book_writer %}
+            <option value="{{writer.id}}">{{writer.last_name}}</option>
+            {%endfor%}
+        </select>
+    </p>
+     <p>
+        <label for="book_genre" > Select Book Genre:</label>
+        <select id="book_genre" name="book_genre">
+            <option selected disabled>-----</option>
+            {%for genre in book_genre %}
+            <option value="{{genre.id}}">{{genre.type}}</option>
+            {%endfor%}
+        </select>
+    </p>
+    <p>
+        <label for="rating">Input book rating:</label>
+        <input type="number" id="rating" name = "rating" required>
+    </p>
+
+     <p>
+        <label for="image">Input book image:</label>
+        <input type="file" id="image" name = "image" >
+    </p>
+
+    <p>
+        <input type="submit" value="Create Book">
+    </p>
+
+
+</form>
+
+</body>
+</html>

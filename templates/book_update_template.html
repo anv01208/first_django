@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update book</title>
+</head>
+<body>
+<form action="" method="post" enctype="multipart/form-data">
+    {%csrf_token%}
+     <p>
+        <label for="title">Input book title:</label>
+        <input type="text" id="title" name="name" value="{{book.title}}">
+    </p>
+    <p>
+        <label for="description">Input book description:</label>
+        <input type="text" id="description" name = "description" value="{{book.title}}" >
+    </p>
+    <p>
+        <label for="release_date">Input book release date:</label>
+        <input type="number" id="release_date" name = "release_date" value="{{book.release_date}}">
+    </p>
+    <p>
+        <label for="book_writer" > Select Book Writer:</label>
+        <select id="book_writer" name="book_writer">
+            <option selected disabled>{{book.author}}</option>
+            {%for writer in book_writer %}
+            <option value="{{writer.id}}">{{writer.last_name}}</option>
+            {%endfor%}
+        </select>
+    </p>
+     <p>
+        <label for="book_genre" > Select Book Genre:</label>
+        <select id="book_genre" name="book_genre">
+            <option selected  disabled>{{book.genre}}</option>
+            {%for genre in book_genre %}
+            <option value="{{genre.id}}">{{genre.type}}</option>
+            {%endfor%}
+        </select>
+    </p>
+    <p>
+        <label for="rating">Input book rating:</label>
+        <input type="number" step="any" id="rating" name = "rating" value="{{book.rating}}">
+    </p>
+
+     <p>
+        <label for="image">Input book image:</label>
+        <input type="file" id="image" name = "image" >
+         {%if book.image%}
+            <img src="{{book.image.url}}" width="200px">
+         {% endif %}
+    </p>
+
+    <p>
+        <input type="submit" value="Update Book">
+    </p>
+
+</form>
+</body>
+</html>

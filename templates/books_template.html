@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Books</title>
+</head>
+<body>
+<h1> {{message}}</h1>
+<a href="{% url 'book_create_url'%}">Add new Book</a>
+<ul>
+    {% for book in books%}
+    <li>
+        <p>
+            {{book.title}} - {{book.author}}
+            <br>
+            <a href="{% url 'book_url' book.id%}">More Info</a>
+        </p>
+        <br>
+    </li>
+    {%endfor%}
+
+</ul>
+
+</body>
+</html>
